@@ -148,3 +148,8 @@ Cargo.lock
 **/*.rs.bk
 
 # End of https://www.gitignore.io/api/c,c++,node,rust
+
+
+### Emscripten ###
+
+emsdk-portable
