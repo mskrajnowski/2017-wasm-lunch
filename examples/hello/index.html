@@ -1,0 +1,18 @@
+<html>
+    <meta>
+        <title>WebAssembly - Hello world!</title>
+    </meta>
+    <body>
+        <script src="hello.c.js"></script>
+        <script src="hello.cpp.js"></script>
+        <script src="hello.rs.js"></script>
+
+        <script>
+            modules = {
+                c: new CModule(),
+                cpp: new CppModule(),
+                rust: new RustModule(),
+            }
+        </script>
+    </body>
+</html>
