@@ -1,0 +1,53 @@
+<html>
+    <meta>
+        <title>WebAssembly - Log</title>
+    </meta>
+    <body>
+        <script>
+            const memory = new WebAssembly.Memory({initial: 256});
+            const bytes = new Uint8Array(memory.buffer);
+            const decoder = new TextDecoder('ascii');
+            const encoder = new TextEncoder('ascii');
+
+            function readString(ptr) {
+                return decoder.decode(
+                    bytes.slice(ptr, bytes.indexOf(0, ptr))
+                );
+            }
+
+            function writeString(ptr, string) {
+                const chars = encoder.encode(string);
+
+                for (let i = 0; i < chars.length; ++i, ++ptr) {
+                    bytes[ptr] = chars[i];
+                }
+
+                bytes[ptr] = 0;
+            }
+
+            function log(msg) {
+                console.log(readString(msg));
+            }
+
+            fetch('log.wasm')
+            .then((response) => response.arrayBuffer())
+            .then((data) => WebAssembly.compile(data))
+            .then((module) => WebAssembly.Instance(module, {
+                env: {
+                    memory: memory,
+                    memoryBase: 0,
+                    table: new WebAssembly.Table({initial: 256, element: 'anyfunc'}),
+                    tableBase: 0,
+                    _console_log: log,
+                },
+            }))
+            .then((instance) => {
+                instance.exports._main();
+
+                writeString(100, 'Hello');
+                instance.exports._upper(100, 110);
+                console.log(readString(110));
+            })
+        </script>
+    </body>
+</html>

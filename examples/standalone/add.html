@@ -1,0 +1,23 @@
+<html>
+    <meta>
+        <title>WebAssembly - Add</title>
+    </meta>
+    <body>
+        <script>
+            fetch('add.wasm')
+            .then((response) => response.arrayBuffer())
+            .then((data) => WebAssembly.compile(data))
+            .then((module) => WebAssembly.Instance(module, {
+                env: {
+                    memory: new WebAssembly.Memory({initial: 256}),
+                    memoryBase: 0,
+                    table: new WebAssembly.Table({initial: 256, element: 'anyfunc'}),
+                    tableBase: 0,
+                },
+            }))
+            .then((instance) => {
+                console.log(`1 + 2 = ${instance.exports._add(1, 2)}`)
+            })
+        </script>
+    </body>
+</html>
