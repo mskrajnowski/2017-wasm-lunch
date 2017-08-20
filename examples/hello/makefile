@@ -23,6 +23,7 @@ rust: hello.rs
 		-O \
 		--target=wasm32-unknown-emscripten \
 		-C link-args="-s MODULARIZE=1 -s EXPORT_NAME='RustModule'"
+	rm hello.rs.asm.js
 	wasm2wast hello.rs.wasm > hello.rs.wast
 
 clean:
