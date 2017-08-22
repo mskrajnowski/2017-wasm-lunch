@@ -1,8 +1,8 @@
 My playground for preparing a short talk at [10Clouds](http://10clouds.com) about [WebAssembly].
 - [WebAssembly](#webassembly)
 - [Getting Started](#getting-started)
-    - [[Emscripten][Emscripten installation]](#emscriptenemscripten-installation)
-    - [[WebAssembly Toolkit]](#webassembly-toolkit)
+    - [Emscripten](#emscripten)
+    - [WebAssembly Toolkit](#webassembly-toolkit)
     - [C/C++](#cc)
     - [Rust](#rust)
     - [TurboScript](#turboscript)
@@ -27,16 +27,13 @@ source emsdk_env.sh
 ## [WebAssembly Toolkit]
 
 ```sh
+sudo apt-get install cmake build-essential
 git clone --recursive https://github.com/WebAssembly/wabt
 cd wabt
-make
+make gcc-release
 ```
 
-## C/C++
-
 ## Rust
-
-## TurboScript
 
 # Links
 
