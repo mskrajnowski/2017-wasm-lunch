@@ -5,7 +5,6 @@ My playground for preparing a short talk at [10Clouds](http://10clouds.com) abou
     - [WebAssembly Toolkit](#webassembly-toolkit)
     - [C/C++](#cc)
     - [Rust](#rust)
-    - [TurboScript](#turboscript)
 - [Links](#links)
 - [Videos](#videos)
 
