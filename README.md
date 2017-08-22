@@ -33,7 +33,15 @@ cd wabt
 make gcc-release
 ```
 
-## Rust
+## [Rust][Rust WebAssembly Installation]
+
+```sh
+curl https://sh.rustup.rs -sSf | sh
+source $HOME/.cargo/env
+rustup install nightly
+rustup default nightly
+rustup target add wasm32-unknown-emscripten
+```
 
 # Links
 
@@ -65,6 +73,7 @@ make gcc-release
 [Emscripten Installation]: http://kripken.github.io/emscripten-site/docs/getting_started/downloads.html
 [The Path to Rust on the Web]: https://hoverbear.org/2017/04/06/the-path-to-rust-on-the-web/
 [The Rusty Web]: https://davidmcneil.gitbooks.io/the-rusty-web/content/
+[Rust WebAssembly Installation]: https://davidmcneil.gitbooks.io/the-rusty-web/content/setup-and-hello-world.html
 [TurboScript]: https://github.com/01alchemist/TurboScript
 [Assembleash]: https://maxgraey.github.io/Assembleash/#TurboScript
 [Jay Phelps - WebAssembly Demystified]: https://www.youtube.com/watch?v=cRwUD5SxF4o
